@@ -2,6 +2,8 @@ package dev;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** 
  * 
@@ -13,5 +15,35 @@ import java.util.List;
  */
 
 public class Dictionar extends Clasa {
-	private List<Clasa> dictionar;
+	private List<Clasa> dictionar = new ArrayList<>();
+	
+	public List<Clasa> getDictionar() {
+		return dictionar;
+	}
+	
+	public Cuvant search(String cuvant) {
+		List<Clasa> temp = this.getDictionar();
+		for(Clasa c: temp) {
+			if(c.elExists(cuvant)) {
+				return c.get(cuvant);
+			}
+		}
+		return null;
+	}
+	
+	public Cuvant advancedSearch(String cuvant) {
+		
+		String pattern = "(.*)?(.*)";
+
+	      // Create a Pattern object
+	      Pattern r = Pattern.compile(pattern);
+
+	      // Now create matcher object.
+	      Matcher m = r.matcher(cuvant);
+	      if (m.find( )) {
+	    	  return null;
+	      }
+	      
+	      return null;
+	}
 }
